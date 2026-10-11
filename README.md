@@ -1,66 +1,56 @@
-# Qiskit Fall Fest 2026 — Project Submission Template
-**IIIT Kottayam Quantum Hackathon (24-Hour Sprint)**
-
-> ⚠️ **CRITICAL INSTRUCTIONS FOR PARTICIPANTS:**
-> 1. **Do NOT rename or delete the section headings** below. The automated AI evaluation and filtering system relies on this exact Markdown structure to parse and grade your project.
-> 2. Replace all placeholder text enclosed in `[brackets]` with your project's details.
-> 3. **Commit History Audit:** All project commits must be timestamped strictly within the 24-hour hackathon window (between **October 10, 2026 at 7:05 PM** and **October 11, 2026 at 7:05 PM**). Commits observed outside this window will result in **immediate disqualification**.
-> 4. Ensure all Jupyter Notebooks have their cells **run and outputs displayed** before pushing.
-> 5. Starter resources and reference guides are located in the [`references/`](./references/) folder.
-> 6. **Tech Stack Flexibility:** You are free to use any external frameworks/technologies (e.g., Streamlit, React, Pygame, FastAPI, NetworkX) for your frontend, app logic, or classical baselines. However, **Qiskit MUST power the quantum core** of your project.
-> 7. **Full Event Guide & Rules:** For full schedule details, track inspirations, submission steps, and grading focus areas, refer to [`HACKATHON_GUIDE.md`](./HACKATHON_GUIDE.md).
-
-*(You may delete the instructions box above when preparing your final repository submission)*
-
----
-
-# Project Title
+# Qubit Quest: Quantum Vault
 
 ## Project Metadata
 
-* **Project Title:** `[Your Project Title]`
-* **Team Name:** `[Your Team Name]`
-* **Chosen Track:** `[Track 1: Quantum Games & Interactive Puzzles OR Track 2: Open-Domain Optimization & Real-World Solvers]`
-* **Video Presentation Link:** `[Insert YouTube Unlisted / Google Drive / Loom URL here]`
-  *(⚠️ Crucial: Ensure link access is set to "Anyone with the link can view" on Google Drive or "Unlisted / Public" on YouTube. Locked/inaccessible links cannot be scored!)*
-* **Live Demo Timestamp in Video:** `[MM:SS]` *(e.g., "Demo starts at 03:45")*
+* **Project Title:** `Qubit Quest: Quantum Vault`
+* **Team Name:** `QUANTAREALM`
+* **Chosen Track:** `Track 1: Quantum Games & Interactive Puzzles`
+* **Video Presentation Link:** (https://drive.google.com/drive/folders/1V7yQVyYkma-NkgY2r4w0073T6M7Fudh1?usp=drive_link)
+* **Live Demo Timestamp in Video:** `[00:21]`
 
 ### Team Members (Max 4 members)
+
 | Name | Email | GitHub Username |
 | :--- | :--- | :--- |
-| `[Member 1 Name]` | `[Email]` | `[@username]` |
-| `[Member 2 Name]` | `[Email]` | `[@username]` |
-| `[Member 3 Name]` | `[Email]` | `[@username]` |
-| `[Member 4 Name]` | `[Email]` | `[@username]` |
+| SIVAJAGATHEESH V | `sivajagatheeshv@gmail.com` | `sivajagatheeshv` |
 
 ---
 
 ## 1. Project Overview & Motivation
 
 * **Summary (3–4 sentences):**  
-  `[Provide a concise executive summary of what you built. What is the game or optimization dilemma?]`
+  Qubit Quest: Quantum Vault is an educational puzzle game where players solve clues to identify the correct vault while managing scores, lives, and streaks across increasing difficulty levels. The project explores Grover's search algorithm using Qiskit and the Qiskit Aer simulator. The quantum circuit demonstrates superposition, oracle-based target marking, diffusion, and measurement. The goal is to make quantum computing concepts more interactive through game design.
 
 * **Why this problem / game?**  
-  `[Explain why you chose this specific topic. Why is it engaging, practically relevant, or pedagogically meaningful?]`
+  Quantum computing can be difficult for beginners to understand through theory alone. I chose a puzzle game to make learning more interactive and engaging. By combining vault-solving gameplay with a Grover-style quantum circuit demonstration, the project introduces the basic idea of quantum search in a beginner-friendly way.
 
 ---
 
 ## 2. Quantum Architecture & Mechanics
 
 * **Core Quantum Principles Used:**  
-  `[Specify the exact quantum principles at play: e.g., Superposition (H gate), Entanglement (Bell states / CNOT), Measurement Collapse, Interference, or QAOA Cost Hamiltonian.]`
+  Superposition using Hadamard gates, phase marking through an oracle, amplitude amplification using the diffusion operator, and measurement.
 
 * **How the Quantum Circuit is Integrated:**  
-  `[Explain how quantum states map to your game board, strategy, or optimization problem. How does your Qiskit circuit interact with player input or the optimization loop?]`
+  The game presents clues that help players identify the correct vault. The quantum demonstration explores Grover's search algorithm for finding a marked target among possible states. Qiskit and Qiskit Aer are used to build and simulate the circuit. The target state is predefined in the oracle, so the notebook demonstrates the algorithm's concept rather than providing a quantum advantage within the game's runtime.
 
-* **Circuit Details:**  
-  * **Number of Qubits:** `[e.g., 4 qubits]`
-  * **Key Gates Used:** `[e.g., H, CX, RZ, Measurement]`
-  * **Primitives Used:** `[e.g., StatevectorSampler, StatevectorEstimator, or Qiskit Aer simulator]`
-  * **Other Technologies Used:** `[e.g., Streamlit for UI, NetworkX for graph generation, Pygame, etc. (Note: Qiskit must power the quantum logic)]`
+* **Circuit Details:**
+  * **Number of Qubits:** `4`
+  * **Key Gates Used:** Hadamard (H), oracle phase-marking operations, diffusion operations, and measurement.
+  * **Primitives Used:** Qiskit Aer simulator.
+  * **Other Technologies Used:** Python, Pygame, Qiskit, Qiskit Aer, and Jupyter Notebook / Google Colab.
 
 ```python
-# Optional: Paste a representative snippet of your core Qiskit circuit code here
+# Representative Grover-style circuit outline
+from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(2, 2)
+
+# Create superposition
+qc.h([0, 1])
+
+# Oracle and diffusion operations
+qc.measure([0, 1], [0, 1])
 ```
 
 ---
@@ -68,79 +58,89 @@
 ## 3. Repository Structure & How to Run
 
 ### Project Structure
+
 ```text
-├── README.md               # Project documentation (this file)
-├── requirements.txt        # Python dependencies
-├── src/                    # Source code scripts or game application
-│   └── main.py             # Main entry point (or streamlit app)
-├── notebooks/              # Jupyter notebooks containing experiments
-│   └── solution.ipynb      # Main runnable notebook with outputs
-└── references/             # Hackathon reference guides (Track 1 & Track 2)
+├── README.md
+├── requirements.txt
+├── main.py
+├── notebooks/
+│   └── quantum_vault_demo.ipynb
+└── references/
 ```
+
 
 ### Installation & Execution Instructions
 
-> 💡 **Environment Recommendation:** To avoid package conflicts, we strongly suggest using a fresh Python virtual environment or Google Colab:
-> ```bash
-> python -m venv venv
-> source venv/bin/activate    # On Windows: venv\Scripts\activate
-> pip install -r requirements.txt
-> ```
+**Environment Recommendation:** Use a fresh Python virtual environment or Google Colab for the quantum notebook.
 
 1. **Clone the repository:**
-   ```bash
-   git clone [your-repo-url]
-   cd [your-repo-folder]
-   ```
+
+```bash
+git clone [your-repo-url]
+cd [your-repo-folder]
+```
+
 2. **Install dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
+
+```bash
+pip install -r requirements.txt
+```
+
+If `requirements.txt` is not available, install the required libraries:
+
+```bash
+pip install pygame qiskit qiskit-aer
+```
+
 3. **Run the project / demo:**
-   ```bash
-   # If running a script or CLI game:
-   python src/main.py
 
-   # If running a Streamlit web app:
-   streamlit run src/app.py
+```bash
+python main.py
+```
 
-   # Or open the Jupyter Notebook:
-   jupyter notebook notebooks/solution.ipynb
-   ```
+To explore the quantum circuit, open `notebooks/quantum_vault_demo.ipynb` in Jupyter Notebook or Google Colab and run its cells.
 
 ---
 
 ## 4. Implementation Walkthrough & Live Demo
 
 * **Walkthrough of Gameplay / Optimization Pipeline:**  
-  `[Describe the user experience or algorithmic workflow step-by-step. What inputs does the user provide, what happens inside the quantum circuit, and what output is produced?]`
+  1. The player opens the game and views the available vault puzzle.
+  2. The player uses the displayed clues to identify the correct vault.
+  3. The game tracks the player's score, remaining lives, and streak.
+  4. The difficulty increases as the player progresses.
+  5. The quantum demonstration uses Qiskit and Qiskit Aer to explore a Grover-style search circuit. Hadamard gates create superposition, the oracle marks the target state, the diffusion operation amplifies its probability, and measurement produces the observed outcomes.
 
 * **Key Screenshots / Terminal Output:**  
-  `[Paste sample terminal output, game screenshots, or optimization convergence plots here to demonstrate that the project runs.]`
+  Add screenshots of the running game, puzzle interface, and quantum circuit or notebook output here.
+
+**Video demonstration:**(https://drive.google.com/drive/folders/1V7yQVyYkma-NkgY2r4w0073T6M7Fudh1?usp=drive_link)
 
 ---
 
 ## 5. Classical vs. Quantum Comparison
 
 * **Classical Baseline / Counterpart:**  
-  `[What classical baseline did you compare against? (e.g., a classical player, a random guesser, a brute-force classical solver, or a naive greedy heuristic)]`
+  A classical search can examine candidate vaults one by one until it finds the correct answer. The game's clue-based solving process provides a classical gameplay counterpart. The quantum notebook separately demonstrates Grover's search algorithm using a predefined target.
 
 * **Comparative Analysis:**  
-  `[How did the quantum approach compare to the classical baseline? For Track 1: Did quantum strategy give an unfair advantage or unique gameplay behavior? For Track 2: What was the approximation ratio (C_quantum / C_optimal) and feasibility yield?]`
+  Grover's algorithm can reduce the number of oracle queries for an unstructured search under suitable conditions, compared with classical unstructured search. However, this project does not include sufficient controlled experiments to establish a measured performance advantage. The quantum circuit is an educational simulation, and its target state is predefined in the oracle.
 
 ---
 
 ## 6. Performance, Results & Limitations
 
 * **Key Results & Observations:**  
-  `[Summarize the main results from your experiments, simulations, or gameplay tests.]`
+  The project provides a playable puzzle game with clues, scoring, lives, streaks, and increasing difficulty. It also demonstrates the main stages of a Grover-style quantum search circuit using Qiskit and Qiskit Aer. The combination offers a beginner-friendly way to explore the relationship between quantum computing and game design.
 
 * **Critical Reflection on Limitations:**  
-  `[Be honest and rigorous: What happens if this is scaled to larger qubit counts? How would physical quantum noise, gate errors, and decoherence affect your solution on real NISQ hardware? Acknowledging limitations demonstrates true scientific understanding!]`
+  The quantum circuit runs on a simulator rather than real quantum hardware. The target state is predefined, and the quantum demonstration is not directly integrated into the game's runtime decision-making. Larger circuits require more computational resources, and real quantum hardware can be affected by gate errors, noise, and decoherence. Further experiments with a fair classical baseline and multiple search sizes are needed before drawing performance conclusions.
 
 ---
 
 ## 7. References & Acknowledgments
 
-* `[Cite any open-source libraries, GitHub repositories, or research papers you referenced during the hackathon.]`
-* `[Acknowledge team contributions and tools used.]`
+* [Qiskit Documentation](https://docs.quantum.ibm.com/)
+* [Qiskit Learning Resources](https://learning.quantum.ibm.com/)
+* [Qiskit Aer Documentation](https://qiskit.github.io/qiskit-aer/)
+* **Acknowledgments:** This project was developed for Qiskit Fall Fest 2026. Thanks to the organizers and the open-source quantum computing community for providing learning resources.
