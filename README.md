@@ -76,7 +76,7 @@ qc.measure([0, 1], [0, 1])
 1. **Clone the repository:**
 
 ```bash
-git clone [your-repo-url]
+git clone [https://github.com/sivajagatheeshv/Qubit-Quest-Quantum-Vault]
 cd [your-repo-folder]
 ```
 
